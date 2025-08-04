@@ -1,6 +1,6 @@
-import { type ClassValue } from "clsx";
-import { twMerge } from "tailwind-merge";
-import clsx from "clsx";
+import { type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import clsx from 'clsx';
 
 // Utility function for merging Tailwind classes
 export function cn(...inputs: ClassValue[]) {
@@ -127,7 +127,7 @@ export function omit<T extends object, K extends keyof T>(obj: T, keys: K[]): Om
 // Debounce utility
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  wait: number
+  wait: number,
 ): (...args: Parameters<T>) => void {
   let timeout: NodeJS.Timeout;
   return (...args: Parameters<T>) => {
@@ -139,7 +139,7 @@ export function debounce<T extends (...args: any[]) => any>(
 // Throttle utility
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
-  limit: number
+  limit: number,
 ): (...args: Parameters<T>) => void {
   let inThrottle: boolean;
   return (...args: Parameters<T>) => {
@@ -207,7 +207,7 @@ export function delay(ms: number): Promise<void> {
 export async function retry<T>(
   fn: () => Promise<T>,
   retries = 3,
-  delayMs = 1000
+  delayMs = 1000,
 ): Promise<T> {
   try {
     return await fn();

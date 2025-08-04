@@ -33,6 +33,10 @@ export const AsideConstants: AsideType[] = [
       },
     ],
   },
+  {
+    title: 'Тарифы',
+    path: '/tariff',
+  },
 ];
 
 

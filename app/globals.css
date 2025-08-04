@@ -126,3 +126,22 @@
         @apply bg-background text-foreground;
     }
 }
+
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+    display: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar-corner {
+    display: none;
+}
