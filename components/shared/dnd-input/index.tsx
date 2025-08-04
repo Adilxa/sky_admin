@@ -6,6 +6,7 @@ import { Camera, Trash2, X } from 'lucide-react';
 import TooltipTitle from '@/components/shared/tooltip-title';
 
 interface Props {
+  hide?: boolean;
   tooltip: {
     title: string;
     description: string;
@@ -20,6 +21,7 @@ const DnDInput: React.FC<Props> = ({
                                      onImageSelect,
                                      multiple = false,
                                      maxFiles = 1,
+                                     hide = false,
                                    }) => {
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
   const [previewUrls, setPreviewUrls] = useState<string[]>([]);
@@ -77,7 +79,10 @@ const DnDInput: React.FC<Props> = ({
 
   return (
     <div className={'flex flex-col gap-3'}>
-      <TooltipTitle title={tooltip.title} tooltip={tooltip.description} />
+      {
+        !hide &&
+        <TooltipTitle title={tooltip.title} tooltip={tooltip.description} />
+      }
       <Dropzone
         onDrop={handleDrop}
         accept={{

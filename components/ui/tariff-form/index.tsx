@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tooltip } from '@radix-ui/react-tooltip';
 import TooltipTitle from '@/components/shared/tooltip-title';
 
 interface ITariffForm {

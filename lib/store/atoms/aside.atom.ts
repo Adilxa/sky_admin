@@ -16,6 +16,10 @@ export const AsideConstants: AsideType[] = [
     visibleState: false,
     subPath: [
       {
+        title: 'Реклама',
+        path: '/advertising',
+      },
+      {
         title: 'Товары',
         path: '/goods',
       },
