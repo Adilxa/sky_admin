@@ -40,7 +40,7 @@ const PageContentWrapper: React.FC<Props> = ({ children, title, search, btn, inp
         {children}
       </div>
       <Image
-        className={'absolute bottom-6 left-8 right-8 w-auto pointer-events-none'}
+        className={'absolute bottom-6 left-8 z-[9999999999999999] right-8 w-full pointer-events-none'}
         src={SHADE_PNG}
         alt={'shadow'}
       />
