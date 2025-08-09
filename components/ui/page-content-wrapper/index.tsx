@@ -2,6 +2,7 @@ import React, { ReactNode } from 'react';
 import CustomInput from '@/components/shared/custon-input';
 import SHADE_PNG from '../../../assets/png/shade.png';
 import Image from 'next/image';
+import FiltrationSettings from '@/components/shared/filtration-settings';
 
 interface Props {
   children: React.ReactNode;
@@ -9,11 +10,12 @@ interface Props {
   search?: boolean;
   btn?: ReactNode;
   inpPosition?: 'right' | 'left';
+  filters?: boolean;
 }
 
-const PageContentWrapper: React.FC<Props> = ({ children, title, search, btn, inpPosition }) => {
+const PageContentWrapper: React.FC<Props> = ({ children, title, search, btn, inpPosition, filters = false }) => {
   return (
-    <main className={'bg-[var(--aside-bg)] rounded-[32px] py-6 px-8 relative'}>
+    <main className={'bg-[var(--aside-bg)] rounded-[32px] py-6 px-8 relative overflow-hidden'}>
       <div className={'flex justify-between items-center mb-5'}>
         <div className={'flex items-center gap-3'}>
           <h1 className={'color-[#101010] font-semibold text-[20px]'}>
@@ -23,6 +25,11 @@ const PageContentWrapper: React.FC<Props> = ({ children, title, search, btn, inp
             search &&
             inpPosition === 'left' && (
               <CustomInput />
+            )
+          }
+          {
+            filters && (
+              <FiltrationSettings />
             )
           }
         </div>

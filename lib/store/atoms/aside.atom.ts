@@ -35,11 +35,34 @@ export const AsideConstants: AsideType[] = [
         title: 'Доп услуги',
         path: '/additional-service',
       },
+      {
+        title: 'Тарифы',
+        path: '/tariff',
+      },
+      {
+        title: 'Абонементы',
+        path: '/aboniments',
+      },
+      {
+        title: 'Сертификаты',
+        path: '/certificates',
+      },
     ],
   },
   {
     title: 'Тарифы',
     path: '/tariff',
+    visibleState: false,
+    subPath: [
+      {
+        title: 'Тарифы',
+        path: '/tariff',
+      },
+      {
+        title: 'Товары',
+        path: '/goods',
+      },
+    ],
   },
 ];
 

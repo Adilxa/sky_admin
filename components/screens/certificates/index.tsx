@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '@/components/layout/header';
-import UploadButton from '../../shared/upload-btn';
+import UploadButton from '@/components/shared/upload-btn';
 import PageContentWrapper from '@/components/ui/page-content-wrapper';
 import AddNewBtn from '@/components/shared/add-new-btn';
-import TariffCard from '@/components/ui/tariff-card';
+import CertificateCard from '@/components/shared/certificate-card';
 
 const mockData = [
   {
@@ -50,17 +50,17 @@ const mockData = [
   },
 ];
 
-const TariffScreen = () => {
 
+const CertificateScreen = () => {
   return (
     <>
-      <Header title={'Тарифы'} btn={<UploadButton />} />
-      <PageContentWrapper filters={true} search={true} title={'Тарифы '} inpPosition={'left'}
-                          btn={<AddNewBtn route={'/creative/tariff/create'} text={'Создать тариф'} />}>
-        <div className={'grid grid-cols-3 gap-6 flex-1'}>
+      <Header title={'Сертификаты'} btn={<UploadButton />} />
+      <PageContentWrapper filters={true} search={true} title={'Все сертификаты'} inpPosition={'left'}
+                          btn={<AddNewBtn route={'/creative/certificates/create'} text={'Создать ceртификат'} />}>
+        <div className={'grid grid-cols-2 gap-6 flex-1'}>
           {
             mockData.map((item) => (
-              <TariffCard key={item.id} title={item.title} sky={item.sky} age={item.age} />
+              <CertificateCard key={item.id} title={item.title} age={item.age} />
             ))
           }
         </div>
@@ -69,4 +69,4 @@ const TariffScreen = () => {
   );
 };
 
-export default TariffScreen;
+export default CertificateScreen;
