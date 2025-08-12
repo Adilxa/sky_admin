@@ -4,11 +4,10 @@ import Image from 'next/image';
 
 interface Props {
   title: string;
-  sky: number;
   age: string;
 }
 
-const TariffCard: React.FC<Props> = ({ title, sky, age }) => {
+const TariffCard: React.FC<Props> = ({ title, age }) => {
   return (
     <div className={'rounded-[32px] bg-[#F1F1F1] p-8 flex flex-col gap-4 shadow-md'}>
       <div className={'rounded-full w-[64px] h-[64px] bg-[#B6B6B626] flex items-center justify-center'}>
@@ -19,10 +18,6 @@ const TariffCard: React.FC<Props> = ({ title, sky, age }) => {
         <h2 className={'text-[#292929] text-[24px] font-semibold'}>
           {age}
         </h2>
-
-        <div className={'flex items-center justify-center bg-[#32DBF9] px-2 py-1 rounded-full'}>
-          <h5 className={'text-white font-semibold text-[14px]'}>{`+ ${sky} sky`}</h5>
-        </div>
       </div>
     </div>
   );

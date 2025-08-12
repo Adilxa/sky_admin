@@ -8,13 +8,17 @@ interface Props {
   text: string;
   route: string;
   showPlus?: boolean;
+  func?: () => void;
 }
 
-const AddNewBtn: React.FC<Props> = ({ text, route, showPlus = true }) => {
+const AddNewBtn: React.FC<Props> = ({ text, route, showPlus = true, func }) => {
 
   const router = useRouter();
 
   const onClickBtn = () => {
+    if (func) {
+      func();
+    }
     router.push(route);
   };
 

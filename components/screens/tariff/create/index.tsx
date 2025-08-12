@@ -1,16 +1,18 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/layout/header';
 import UploadButton from '@/components/shared/upload-btn';
 import PageContentWrapper from '@/components/ui/page-content-wrapper';
 import AddNewBtn from '@/components/shared/add-new-btn';
-import DnDInput from '@/components/shared/dnd-input';
 import TariffForm from '@/components/ui/tariff-form';
+import { getQueryParam } from '@/lib/helpers/general.helpers';
+import { onCreateTariff } from '@/components/screens/tariff/create/api';
+import { useMutation } from '@tanstack/react-query';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 interface ITariffState {
-  logo: File | null;
-  illustration: File | null;
   name: string;
   filial: string;
   minAge: string;
@@ -19,9 +21,7 @@ interface ITariffState {
   bonus: string;
 }
 
-interface ITariffForm {
-  logo: string;
-  illustration: string;
+export interface ITariffForm {
   name: string;
   filial: string;
   minAge: string;
@@ -32,8 +32,6 @@ interface ITariffForm {
 
 const TariffCreateScreen = () => {
   const [tariff, setTariff] = React.useState<ITariffState>({
-    logo: null,
-    illustration: null,
     name: '',
     filial: '',
     minAge: '',
@@ -42,48 +40,41 @@ const TariffCreateScreen = () => {
     bonus: '',
   });
 
-  const handleTariffChange = (field: keyof ITariffForm, value: string) => {
-    if (field === 'logo' || field === 'illustration') {
-      return;
-    }
+  const idParam: string | null = getQueryParam('id');
 
+  const router = useRouter();
+
+  useEffect(() => {
+    setTariff((prev) => idParam != null ? { ...prev, filial: idParam } : { ...prev });
+  }, [router]);
+
+  const handleTariffChange = (field: keyof ITariffForm, value: string) => {
     setTariff(prev => ({
       ...prev,
       [field]: value,
     }));
   };
 
+  const mutation = useMutation({
+    mutationFn: (data: ITariffForm) => onCreateTariff(data),
+    onSuccess: () => {
+      toast('Успешно создано');
+      idParam ? router.push(`/branches/services?id=${idParam}`) : router.push('/creative/tariff');
+    },
+  });
+
   const handleSubmit = () => {
-    const formData = new FormData();
-    if (tariff.logo) formData.append('logo', tariff.logo);
-    if (tariff.illustration) formData.append('illustration', tariff.illustration);
-    formData.append('name', tariff.name);
-    formData.append('filial', tariff.filial);
-    formData.append('minAge', tariff.minAge);
-    formData.append('maxAge', tariff.maxAge);
-    formData.append('price', tariff.price);
-    formData.append('bonus', tariff.bonus);
-
-    console.log('FormData for server:', formData);
+    const tariffData = {
+      name: tariff.name,
+      filial: tariff.filial,
+      minAge: tariff.minAge,
+      maxAge: tariff.maxAge,
+      price: tariff.price,
+      bonus: tariff.bonus,
+    };
+    mutation.mutate(tariffData);
   };
 
-  const handleLogoUpload = (files: File[]) => {
-    if (files.length > 0) {
-      setTariff(prev => ({
-        ...prev,
-        logo: files[0],
-      }));
-    }
-  };
-
-  const handleIllustrationUpload = (files: File[]) => {
-    if (files.length > 0) {
-      setTariff(prev => ({
-        ...prev,
-        illustration: files[0],
-      }));
-    }
-  };
 
   return (
     <>
@@ -95,25 +86,14 @@ const TariffCreateScreen = () => {
             showPlus={false}
             route={''}
             text={'Добавить тариф'}
+            func={() => handleSubmit()}
           />
         }
         title={'Создание тарифа'}
       >
         <div className={'grid grid-cols-2 gap-6'}>
-          <div className={'col-span-1 grid grid-cols-2 gap-6'}>
-            <DnDInput
-              tooltip={{ title: 'Логотип', description: 'lorem24' }}
-              onImageSelect={handleLogoUpload}
-            />
-            <DnDInput
-              tooltip={{ title: 'Иллюстрация', description: 'lorem24' }}
-              onImageSelect={handleIllustrationUpload}
-            />
-          </div>
           <TariffForm
             tariff={{
-              logo: tariff.logo?.name || '',
-              illustration: tariff.illustration?.name || '',
               name: tariff.name,
               filial: tariff.filial,
               minAge: tariff.minAge,

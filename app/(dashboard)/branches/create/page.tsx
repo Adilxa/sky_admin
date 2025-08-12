@@ -1,9 +1,9 @@
 import React from 'react';
-import BranchScreen from '@/components/screens/branch';
+import BranchCreate from '@/components/screens/branch/create';
 
 const Page = () => {
   return (
-    <BranchScreen />
+    <BranchCreate />
   );
 };
 
