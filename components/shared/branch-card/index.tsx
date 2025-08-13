@@ -19,7 +19,8 @@ const BranchCard: React.FC<Props> = ({ title, location, image }) => {
         <MapPin color={'#757575'} className="flex-shrink-0" />
         <span className="truncate">{location}</span>
       </div>
-      <Image className={'w-full object-cover rounded-[18px]'} src={image} alt={'locationimage'} />
+      <Image className={'w-full object-cover rounded-[18px] h-[150px]'} width={500} height={500} src={image}
+             alt={'locationimage'} />
     </div>
   );
 };

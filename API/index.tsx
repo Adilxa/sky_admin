@@ -9,7 +9,7 @@ export const $api = axios.create({
   withCredentials: true,
 });
 
-const MOCKACCESS = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MDU4NDcyLCJpYXQiOjE3NTQ5NzIwNzIsImp0aSI6ImY2MWZiZTY3YTJiZjQ4YzJhYWFhZWMyMjlkOWQ5ZGVjIiwidXNlcl9pZCI6OX0.BgfO6D6L0GW64VfFQSz75mnSRQeMqfZigNnrRMDo6co';
+const MOCKACCESS = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1MTQ0Njg3LCJpYXQiOjE3NTUwNTgyODcsImp0aSI6ImQ2ZjRlODU1MjY2YTRlMTA4MDE5MGIyMjYwZDdjZGU5IiwidXNlcl9pZCI6OX0.STSMlcRhZdUTT3Oj3z69g5YTgHoG8jj7x4w2GV3d5tM';
 
 $api.interceptors.request.use(config => {
   const accessToken = MOCKACCESS;

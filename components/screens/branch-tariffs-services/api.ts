@@ -8,3 +8,13 @@ export const getTariffsList = async (id: string) => {
     return e.response.data;
   }
 };
+
+
+export const getExtraServicesList = async (id: string) => {
+  try {
+    const res = await $api.get(`dashboard/extra-services/branch-services/?branch=${id}`);
+    return res.data;
+  } catch (e: any) {
+    return e.response.data;
+  }
+};

@@ -18,7 +18,7 @@ const AddServiceBtn: React.FC<Props> = ({ id }) => {
           <Plus color={'#fff'} />
         </div>
         <h4 className={'text-[15px] text-[#727272] font-semibold'}>
-          Добавить тариф
+          Добавить сервис
         </h4>
       </div>
     </div>
