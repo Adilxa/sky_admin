@@ -9,12 +9,12 @@ import TariffCard from '@/components/ui/tariff-card';
 import { LoaderCircle } from 'lucide-react';
 import AddServiceBtn from '@/components/ui/add-service-btn';
 import { Label } from '@radix-ui/react-label';
-import { Switch } from '@radix-ui/react-switch';
+import Switch from '../../shared/switcher';
 
 const BranchTariffsServices = () => {
 
   const id: string | null = getQueryParam('id');
-
+  const [isEnabled, setIsEnabled] = React.useState(true);
   const { data, isLoading } = useQuery({
     queryFn: () => getTariffsList(id ? id : ''),
     queryKey: ['tariffsList', id],
@@ -58,10 +58,18 @@ const BranchTariffsServices = () => {
         </div>
       </div>
       <div>
-        <h1 className={'text-[17px] ml-2 text-[#00000080] font-semibold mb-2'}>
+        <h1 className={'text-[17px] text-[#00000080] font-semibold mb-2'}>
           Аттракцион
         </h1>
-
+        <div className={'flex flex-col gap-2'}>
+          <Switch
+            checked={isEnabled}
+            onChange={setIsEnabled}
+            label="Включен"
+            description=""
+          />
+          <p className={'text-[15px] text-[#B0B0B0]'}>Добавьте аттракционы если они есть в филиале</p>
+        </div>
       </div>
     </div>
   );
