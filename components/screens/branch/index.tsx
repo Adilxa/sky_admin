@@ -11,14 +11,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getBranchesList } from '@/components/screens/branch/api';
 import { LoaderCircle } from 'lucide-react';
 
-const mockData = [
-  {
-    title: 'Sky Kids',
-    location: 'hhehhehe llell lellel dsad sad sad as ddasdasd',
-    image: LOCATION,
-  },
-];
-
 const BranchScreen = () => {
 
   const { data, isLoading } = useQuery({
@@ -37,7 +29,7 @@ const BranchScreen = () => {
                           btn={<AddNewBtn route={'/branches/create'} text={'Создать филиал'} />}>
         <div className={'grid grid-cols-4 gap-10 flex-1'}>
           {
-            data.map((item: any, index: number) => (
+            data?.map((item: any, index: number) => (
               <BranchCard key={`${item?.name}_${index}`} title={item?.name} image={item?.image}
                           location={item?.address} />
             ))

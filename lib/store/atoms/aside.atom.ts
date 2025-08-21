@@ -11,6 +11,10 @@ export const AsideConstants: AsideType[] = [
     path: '/branches',
   },
   {
+    title: 'Система лояльности',
+    path: '/loyalty-system',
+  },
+  {
     title: 'Креатив',
     path: '/creative',
     visibleState: false,
