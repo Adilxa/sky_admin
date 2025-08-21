@@ -27,6 +27,7 @@ const Profile = () => {
   ];
 
   const [selectedAccesses, setSelectedAccesses] = useState<string[]>([]);
+  const [edit, setEdit] = useState<boolean>(false);
 
   const toggleAccess = (item: string) => {
     if (selectedAccesses.includes(item)) {
@@ -36,12 +37,24 @@ const Profile = () => {
     }
   };
 
+  const buttonContent = edit ? (
+    'Сохранить'
+  ) : (
+    <>
+      <Image src={editIcon} alt='edit' /> Редактировать
+    </>
+  );
+
   return (
     <div className='bg-white rounded-4xl py-8 px-5'>
       <div className='flex items-center justify-between'>
         <h1 className='text-2xl font-semibold'>Профиль</h1>
-        <button className='flex items-center gap-2 bg-[#4F49FF] py-3 px-5 rounded-full cursor-pointer text-white shadow-[inset_2px_0px_8px_2px_#F8F8F833]'>
-          <Image src={editIcon} alt='edit' /> Редактировать
+        <button
+          type='button'
+          onClick={() => setEdit(!edit)}
+          className='flex items-center gap-2 bg-[#4F49FF] py-3 px-5 rounded-full cursor-pointer text-white shadow-[inset_2px_0px_8px_2px_#F8F8F833]'
+        >
+          {buttonContent}
         </button>
       </div>
       <div className='flex items-center gap-4 mt-8 text-[#727272]'>
@@ -59,18 +72,20 @@ const Profile = () => {
       </div>
       <div className='flex justify-between gap-20 mt-8'>
         <div className='flex flex-1 flex-col justify-between gap-6'>
-          <BasiceInput type='text' InputText='Алеля Аляляейля' text='ФИО' />
+          <BasiceInput type='text' InputText='Алеля Аляляейля' text='ФИО' edit={edit} />
           <BasiceInput
             type='text'
             InputText='chelsiehaley@email.com'
             text='Email'
             icon={correctIcon}
+            edit={edit}
           />
           <BasiceInput
             type='text'
             InputText='Суперадмин'
             text='Роль'
             icon={Lock}
+            edit={edit}
           />
         </div>
 
@@ -80,6 +95,7 @@ const Profile = () => {
             InputText='kg-friend'
             text='Пароль'
             icon={hide}
+            edit={edit}
           />
           <div className='mt-8'>
             <div className='flex items-center gap-1'>
