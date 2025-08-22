@@ -24,9 +24,9 @@ const BranchScreen = () => {
   }
   return (
     <>
-      <Header title={'Филиалы'} btn={<UploadButton />} />
-      <PageContentWrapper filters={true} search={true} title={'Филиалы'} inpPosition={'left'}
-                          btn={<AddNewBtn route={'/branches/create'} text={'Создать филиал'} />}>
+      <Header title={'Филиалы'} btn={<AddNewBtn text='Создать филиал' route='/branches/create' showPlus={true}/>} />
+      <PageContentWrapper filters={false} search={false} title={''} inpPosition={'left'}
+                          btn={<></>}>
         <div className={'grid grid-cols-4 gap-10 flex-1'}>
           {
             data?.map((item: any, index: number) => (

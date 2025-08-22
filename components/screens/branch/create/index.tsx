@@ -54,7 +54,6 @@ const BranchCreate = () => {
     }));
   };
 
-
   const handleNameChange = (value: string) => {
     setBranchData(prev => ({ ...prev, name: value }));
   };
