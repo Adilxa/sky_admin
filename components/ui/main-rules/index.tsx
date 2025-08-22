@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table } from '@/components/ui/table';
 
 const MainRules = () => {
   return (
@@ -24,7 +24,8 @@ const MainRules = () => {
             </button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent className="w-56 bg-white border border-gray-200 rounded-lg shadow-lg p-2 rounded-[25px]" align="end">
+          <DropdownMenuContent className="w-56 bg-white border border-gray-200 rounded-lg shadow-lg p-2 rounded-[25px]"
+                               align="end">
             <DropdownMenuItem className="cursor-pointer hover:bg-gray-50 rounded-md p-3 focus:bg-gray-50">
               <div className="flex items-center justify-between w-full">
                 <div className={'flex items-center gap-2'}>
@@ -38,50 +39,7 @@ const MainRules = () => {
         </DropdownMenu>
       </header>
       <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead className={'py-3'}>
-              Название правила
-            </TableHead>
-            <TableHead>
-              Условие
-            </TableHead>
-            <TableHead>
-              Условие
-            </TableHead>
-            <TableHead>
-              Размер Кэшбэка
-            </TableHead>
-            <TableHead>
-              Срок действия
-            </TableHead>
-            <TableHead>
-              Статус
-            </TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell className={'py-3'}>
-              Кэшбэк за билеты
-            </TableCell>
-            <TableCell>
-              Билет
-            </TableCell>
-            <TableCell>
-              Билет
-            </TableCell>
-            <TableCell>
-              10% от суммы
-            </TableCell>
-            <TableCell>
-              Бессрочно
-            </TableCell>
-            <TableCell>
-              Успешно
-            </TableCell>
-          </TableRow>
-        </TableBody>
+
       </Table>
     </section>
   );
